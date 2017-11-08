@@ -1,6 +1,5 @@
 package Mohammed.Abrar.ProjectATM;
-import org.junit.Assert;
-import org.junit.Test;
+
 
 public class User extends Person {
     private static int nextUserId;
@@ -10,15 +9,15 @@ public class User extends Person {
     private int accountId;
     private Double moneySaved;
 
+
     public User() {
+
 
     }
 
-    public User(String userName, String passWord) {
+    public User(int userId) {
         this();
-        this.userName = userName;
-        this.passWord = passWord;
-        userId = 1;
+        this.userId = userId;
     }
 
     public String getuserName() {
@@ -42,15 +41,8 @@ public class User extends Person {
         return this.userId;
     }
 
-    public void setId() {
-        this.userId = this.nextUserId;
-        this.nextUserId++;
-    }
-    public void setAccount(int accountId ){
-        AccountManager accountManager = new AccountManager();
-        AccountFactory.createAccount(accountId);
 
-    }
+
 
     public static int getNextUserId() {
         return nextUserId;
