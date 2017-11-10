@@ -3,8 +3,8 @@ package Mohammed.Abrar.ProjectATM;
 public class Person {
     private String firstName;
     private String lastName;
-    private String fullName;
-    private boolean isMale;
+
+
 
 
 
@@ -14,9 +14,10 @@ public class Person {
 
     }
 
-    public  Person(String name){
-        this.fullName = name;
+    public  Person(String firstName, String lastName){
 
+        this.firstName = firstName;
+        this.lastName = lastName;
 
     }
 
@@ -24,20 +25,20 @@ public class Person {
         return firstName;
     }
 
-    public void setFirstName() {
-        this.firstName = firstName;
+    public void setFirstName(String name) {
+        this.firstName = name;
     }
 
-    public String lastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLasttName() {
-        this.lastName = lastName;
+    public void setLasttName(String name) {
+        this.lastName = name;
     }
 
     @Override
     public String toString(){
-        return this.fullName;
+        return this.firstName + " " + this.lastName;
     }
     }

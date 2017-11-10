@@ -1,58 +1,92 @@
-//package Mohammed.Abrar.ProjectATM;
-//
-//import com.sun.tools.internal.xjc.reader.xmlschema.bindinfo.BIConversion;
-//import org.junit.Assert;
-//import org.junit.jupiter.api.Test;
-//
-//import java.util.ArrayList;
-//import java.util.Arrays;
-//
-//import static org.junit.jupiter.api.Assertions.*;
-//
-//class UserFactoryTest {
-//
-//    UserFactory userFactory = new UserFactory();
-//
-//    @Test
-//    void userExist() {
-//        //:Given
-//        User user = UserFactory.createUser("myUserName", "myPassword");
-//
-//        //: then
-//
-//        Assert.assertTrue(UserFactory.userExist(user));
-//
-//    }
-//
-//    @Test
-//    void getUserList() {
-//        //:Given
-//        ArrayList<User> userList = new ArrayList<>();
-//        User user = new User();
-//
-//        userList.add(user);
-//
-//       // System.out.println( userList.size());
-//        user.setPassword("myname");
-//        user.setUserName("myPassword");
-//        System.out.println(userList.get(0).toString());
-////        String expected = "Am de";
-////
-////        //: when
-////       String actual = userFactory.toString();
-////
-////       Assert.assertEquals("Thelist does exist", expected, actual);
-//    }
-//
-//    @Test
-//    void createUser() {
-//        //:Given
-//        User user = UserFactory.createUser("myUserName", "myPassword");
-//
-//        //:then
-//        Assert.assertTrue(UserFactory.userExist(user));
-//
-//    }
-//
-//
-//}
+package Mohammed.Abrar.ProjectATM;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import javax.jws.soap.SOAPBinding;
+import java.util.logging.Logger;
+
+
+public class UserFactoryTest {
+
+
+    UserFactory userFactory = UserFactory.getINSTANCE();
+    User user;
+
+
+    @Test
+   public  void createGetAndUserTest() {
+        userFactory.createUser();
+        int expected = UserFactory.getUserList().size();
+        userFactory.createUser();
+
+
+
+
+        System.out.println(UserFactory.getUserList().size());
+        int actual = UserFactory.getUserList().size();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+   public void checkUserExistTest() {
+        //:Given
+
+          UserFactory.createUser();
+
+          User user = new User(20202020)  ;
+         UserFactory.getUserList().add(user);
+
+
+        System.out.println(userFactory.getUserList().get(0) .getUserId());
+        //System.out.println(id);
+
+          boolean expected = true;
+
+         boolean actual = UserFactory.checkUserExist(user);
+
+         Assert.assertEquals(expected, actual);
+
+
+    }
+
+    @Test
+
+    public void deleteUserTest(){
+        UserFactory.createUser();
+
+
+     int expected =  UserFactory.getUserList().size();
+        System.out.println(UserFactory.getUserList().size()-1);
+      UserFactory.removeUser(user);
+        System.out.println(UserFactory.getUserList().size());
+     int actual = UserFactory.getUserList().size();
+
+     Assert.assertEquals(expected, actual);
+
+    }
+
+
+    @Test
+   public void getUserListTest() {
+        //:Given
+
+        userFactory.createUser();
+        String expected = "[null, null, " + UserFactory.getUserList().get(0).getUserId() +"]";
+
+
+
+
+
+        System.out.println(UserFactory.getUserList().size());
+        String actual = UserFactory.getUserList().toString();
+
+        Assert.assertEquals("the two user information are equal",expected, actual);
+
+
+
+    }
+
+
+}

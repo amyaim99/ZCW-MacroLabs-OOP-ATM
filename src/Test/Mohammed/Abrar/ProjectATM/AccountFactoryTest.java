@@ -1,47 +1,42 @@
-//package Mohammed.Abrar.ProjectATM;
-//
-//import org.junit.Test;
-//import org.junit.Assert;
-//
-//
-//
-//class AccountFactoryTest {
-//    AccountFactory accountFactory= AccountFactory.getINSTANCE();
-////    @Test
-////    void accountCheck() {
-////        AccountFactory accountFactory = AccountFactory.getINSTANCE();
-////        int expcted = 1000000;
-////        int actual =accountFactory.getUserList().get(0).getAccountNumber();
-////        Assert.assertEquals(expcted, actual);
-////    }
-//
-//    @org.junit.jupiter.api.Test
-//    void createAccountOption() {
-//    }
-//
-//    @org.junit.jupiter.api.Test
-//    void createNewAccount() {
-//    }
-//
-//    @org.junit.jupiter.api.Test
-//    void deleteAccount() {
-//    }
-//
-//    @org.junit.jupiter.api.Test
-//    void getUserList() {
-//    }
-//
-//  @Test
-//    void getINSTANCE() {
-//
-//        int expected = 10;
-//      System.out.println(10);
-//        int actual = accountFactory.getUserList().size();
-//      System.out.println(actual);
-//
-//       // Assert.assertEquals(expected, actual);
-//
-//
-//    }
-//
-//}
+package Mohammed.Abrar.ProjectATM;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class AccountFactoryTest {
+    AccountFactory accountFactory = AccountFactory.getINSTANCE();
+
+        Account account = new Account(2000);
+        Account account2 = new Account(4000);
+
+    @Test
+   public void getUserListAndGetINSTANCETEST() {
+
+        int expected = accountFactory.getAccountList().size()+2;
+        accountFactory.getAccountList().add(account);
+        accountFactory.getAccountList().add(account2);
+
+
+       int actual =  accountFactory.getAccountList().size();
+
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    void removeAccountTest(){
+
+        accountFactory.getAccountList().add(account);
+        accountFactory.getAccountList().add(account2);
+
+        int expected = accountFactory.getAccountList().size()-1;
+        AccountFactory.removeAccount(account);
+        int actual = accountFactory.getAccountList().size();
+
+        Assert.assertEquals(expected, actual);
+
+
+}
+
+}

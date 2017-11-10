@@ -2,21 +2,14 @@ package Mohammed.Abrar.ProjectATM;
 
 
 public class User extends Person {
-    private static int nextUserId;
     private String userName;
     private String passWord;
     private int userId;
     private int accountId;
     private Double moneySaved;
 
-
-    public User() {
-
-
-    }
-
     public User(int userId) {
-        this();
+        super();
         this.userId = userId;
     }
 
@@ -37,24 +30,26 @@ public class User extends Person {
     }
 
 
-    public int getId() {
+    public int getUserId() {
         return this.userId;
     }
 
 
 
 
-    public static int getNextUserId() {
-        return nextUserId;
-    }
-
     public String toString()
     {
-    String userInformation = getuserName() +", " + getPassword() + ", " + getId();
+    String userInformation = getuserName() +", " + getPassword() + ", " + getUserId();
 
     return userInformation;
 
     }
 
+    public int getAccountId() {
+        return accountId;
+    }
 
+    public Double getMoneySaved() {
+        return moneySaved;
+    }
 }
